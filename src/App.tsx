@@ -26,7 +26,7 @@ function App() {
         console.error("Houve um erro ao buscar os links:", error);
         // Se der erro, guardamos uma mensagem para o usuário
         setError(
-          "Não foi possível carregar os links. Tente novamente mais tarde."
+          "Não foi possível carregar os links. Tente recarregar a página ou tente novamente após alguns minutos."
         );
       })
       .finally(() => {
