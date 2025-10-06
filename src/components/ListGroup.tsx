@@ -2,8 +2,6 @@
 //Aqui a gente pode usar <Fragment> pra fazer esse elemento todo mas se vc usar uma tag vazia
 //voce nem precisa importar o fragment
 
-import { useState } from "react";
-
 interface Link {
   id: number;
   title: string;
@@ -19,34 +17,27 @@ interface Props {
 // State são os dados manuseados pelo componente, como se fosse uma variavel local dentro de uma função, deve ser MUTAVEL
 
 function ListGroup({ items, heading }: Props) {
-  const [selectedIndex, setSelectedIndex] = useState(-1);
-
   return (
     <>
       <h1>{heading}</h1>
       {items.length === 0 && (
         <p>Nenhum Link Encontrado (O backend está rodando?)</p>
       )}
-      <ul className="list-group">
-        {items.map((link, index) => (
+
+      <div className="mt-4">
+        {" "}
+        {items.map((link) => (
           <a
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={
-              selectedIndex === index
-                ? "list-group-item list-group-item-action active"
-                : "list-group-item list-group-item-action"
-            }
             key={link.id}
-            onMouseOver={() => {
-              setSelectedIndex(index);
-            }}
+            className="btn btn-outline-light d-block p-3 mb-3 text-center"
           >
             {link.title}
           </a>
         ))}
-      </ul>
+      </div>
     </>
   );
 }
